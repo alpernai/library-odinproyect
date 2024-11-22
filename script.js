@@ -3,13 +3,13 @@
 const libraryBody = document.getElementById('library-body');
 const addBookButton = document.getElementById('add-book-button');
 const addBookModal = document.getElementById('add-book-modal');
+const bookForm = document.getElementById('book-form');
 const cancelButton = document.getElementById('cancel-button');
 
-const books = [
-    {title: 'To Kill A Mockingbird', author: 'Harper Lee', pages: 281, year: 1960, status: 'read'},
-    {title: '1984', author: 'George Orwell', pages: 328, year: 1949, status: 'not read'},
-    {title: 'The Great Gatsby', author: 'F. Scott Fitzgerald', pages: 180, year: 1925, status: 'reading'},
-    {title: 'Pride and Prejudice', author: 'Jane Austen', pages: 279, year: 1813, status: 'read'}
+const myBooks = [
+    {title: 'To Kill A Mockingbird', author: 'Harper Lee', year: 1960, status: 'read'},
+    {title: '1984', author: 'George Orwell', year: 1949, status: 'not read'},
+    {title: 'The Great Gatsby', author: 'F. Scott Fitzgerald', year: 1925, status: 'reading'},
 ];
 
 // ---------------Functions---------------
@@ -39,15 +39,32 @@ function createBookCard() {
     card.appendChild(author);
     card.appendChild(year);
 
-    library-body.appendChild(card);
+    libraryBody.appendChild(card);
 }
 
 // ---------------Execution---------------
 
 addBookButton.addEventListener('click', () => addBookModal.showModal());
+cancelButton.addEventListener('click', () => addBookModal.close());
 
+bookForm.addEventListener('submit', function(event) {
+    event.preventDefault(); 
+    
+    const title = document.getElementById('title-input').value;
+    const author = document.getElementById('author-input').value;
+    const year = document.getElementById('year-input').value;
+    const status = document.getElementById('status-input').value;
 
-createBookCard()
+    const newBook = new Book(title, author, year, status);
+
+    myBooks.push(newBook);
+
+    console.log(books);
+
+    document.getElementById('book-form').reset();
+});
+
+createBookCard()   
 
 // ---------------Plan---------------
 
@@ -56,5 +73,3 @@ createBookCard()
 // 2. addNewBook - modal input it fed into a constructor function that creates a new book object and adds it to the library array. 
 // 3. deleteBook - deletes book card from DOM and book object from the array. 
 // 4. createLibrary - creates individual book cards for every book object in the array.
-// 5. displayModal - when Add Book button is clicked, create a dialog modal with inputs, an Add button and a cancel button. Cancel closes and empties modal. Add creates new book object IF all fields are complete. 
-// 6.  

@@ -8,7 +8,8 @@
     font-weight: normal;
     box-sizing: border-box;
     font-family: 'Merriweather', serif;
-    border: 1px dotted red;
+    color: hsl(46, 39%, 23%);
+    /* border: 1px dotted red; */
 }
 
 /* ---------Layout--------- */
@@ -23,16 +24,34 @@ body {
     display: flex;
     justify-content: center;
     padding: 2.5em;
+    z-index: 1;
 }
 
 #library-body {
-    flex: 1; 
+    flex: 1;    
     width: 75vw;
     align-self: center;
+    display: grid;
+    grid-template-rows: 1fr 10fr;
 }
 
 #add-book-modal{
-    margin: auto;;
+    margin: auto;
+}
+
+#add-book-modal div{
+    padding-bottom: 1em;
+}
+
+#book-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#book-card{
+    grid-row: 2 / 3;
 }
 
 #footer {
@@ -42,20 +61,91 @@ body {
 
 /* ---------Styles--------- */
 
-.book-card{
-    border: 1px solid black;
-    border-radius: 5px;
-    padding: 15px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+body, #library-body, #footer {
+    background-color: #fffaf0;
 }
 
-dialog {
-    border: none;
-    padding: 1em;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    background: white;
-    border-radius: 8px;
+#header{
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2)
 }
-dialog::backdrop {
-    background: rgba(0, 0, 0, 0.5);
+
+#add-book-button{
+    align-self: center;
+    justify-self: center;
+    min-height: 40px;
+    min-width: 120px;
+    border-radius: 5px;
+    background-color: hsl(46, 80%, 50%); 
+    color: white; 
+    border: none; 
+    cursor: pointer; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional shadow for depth */
+    transition: background-color 0.3s ease; /* Smooth hover effect */
+}
+
+#add-book-button:hover {
+    background-color: hsl(46, 90%, 40%); /* Slightly darker shade on hover */
+}
+
+#add-book-modal{    
+    height: 400px;
+    width: 400px;
+    border: none;
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 1.5em;
+}
+
+#add-book-modal label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 14px;
+  }
+
+#add-book-modal input[type="text"],
+#add-book-modal input[type="number"] {
+    width: 100%;
+    padding: 8px;
+    border-radius: 5px;
+}
+
+#add-book-modal input[type="radio"] {
+    margin-right: 5px;
+}
+
+#buttons-container {
+    display: flex;
+    gap: 2em;
+}
+  
+#buttons-container button {
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+  }
+
+#buttons-container button:hover {
+    opacity: 0.8; 
+}
+
+#submit-button {
+    background-color: hsl(46, 90%, 40%); /* Complementary color */
+}
+  
+#cancel-button {
+    background-color: hsl(0, 0%, 60%); /* Neutral gray for cancel */
+}
+
+
+#book-card{
+    width: 200px;
+    height: 200px;
+    border-radius: 5px;
+    background-color: hsl(46, 80%, 50%); 
+    color: white; 
+    border: none; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }

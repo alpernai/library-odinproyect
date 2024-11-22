@@ -1,6 +1,7 @@
+/* ---------General--------- */
+
 @import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap');
 
-/* General */
 * {
     padding: 0;
     margin: 0;
@@ -10,7 +11,8 @@
     border: 1px dotted red;
 }
 
-/* Layout */
+/* ---------Layout--------- */
+
 body {
     display: flex;
     flex-direction: column;
@@ -23,11 +25,37 @@ body {
     padding: 2.5em;
 }
 
-#main {
+#library-body {
     flex: 1; 
+    width: 75vw;
+    align-self: center;
+}
+
+#add-book-modal{
+    margin: auto;;
 }
 
 #footer {
     text-align: center;
     padding: 1em;
+}
+
+/* ---------Styles--------- */
+
+.book-card{
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+dialog {
+    border: none;
+    padding: 1em;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background: white;
+    border-radius: 8px;
+}
+dialog::backdrop {
+    background: rgba(0, 0, 0, 0.5);
 }

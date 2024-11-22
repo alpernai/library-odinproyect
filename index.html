@@ -3,23 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Odin Proyect - Library by alpernai</title>
     <link rel="stylesheet" href="style.css">
-    <script src="scripts.js" defer></script>
 </head>
 <body>
+
     <div id="header">
         <h1>my books.</h1>
     </div>
 
-    <div id="main">
-        <button>Add Book</button>
+    <div id="library-body">
+
+        <dialog id="add-book-modal">
+            <form action="" method="get">
+                <h2>Add new book</h2>
+        
+                <div id="title-container">
+                    <label for="title-input">Title</label>
+                    <input type="text" name="title" id="title-input">
+                </div>
+        
+                <div id="author-container">
+                    <label for="author-input">Author</label>
+                    <input type="text" name="author" id="author-input">
+                </div>
+        
+                <div id="year-container">
+                    <label for="year-input">Year</label>
+                    <input type="number" name="year" id="year-input">
+                </div>
+        
+                <div id="status-container">
+                    <label for="status-input">Status</label>
+                    <label>
+                        <input type="radio" name="options" value="read"> read
+                    </label>
+                    <label>
+                        <input type="radio" name="options" value="reading"> reading
+                    </label>
+                    <label>
+                        <input type="radio" name="options" value="not read"> not read
+                    </label>
+                </div>
+        
+                <button id="submit-button" type="submit">Add</button>
+                <button id="cancel-button" type="button">Cancel</button>
+            </form>
+        </dialog>
+
+        <button id="add-book-button">Add Book</button>
+        
     </div>
 
     <div id="footer">
         <p>made by <a href="https://github.com/alpernai">@alpernai</a></p>
     </div>
 
+    
+
+    <script src="script.js"></script>
 </body>
 </html>
 

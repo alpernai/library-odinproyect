@@ -28,21 +28,20 @@ function createBookCard(book, index) {
     const status = document.createElement('p');
     const deleteButton = document.createElement('button');
     const toggleStatusButton = document.createElement('button');
-
+  
     card.className = 'book-card';
     title.className = 'book-title';
     author.className = 'book-author';
     year.className = 'book-year';
     status.className = 'book-status';
+    deleteButton.className = 'delete-button';
+    toggleStatusButton.className = 'toggle-status-button';
 
     title.textContent = `${book.title}`;
     author.textContent = `${book.author}`;
     year.textContent = `${book.year}`;
     status.textContent = `${book.status}`;
     toggleStatusButton.textContent = 'Change Status';
-
-    deleteButton.className = 'delete-button';
-    toggleStatusButton.className = 'toggle-status-button';
 
     deleteButton.addEventListener('click', () => deleteBookCard(index));
     toggleStatusButton.addEventListener('click', () => toggleBookStatus(index, status));
@@ -78,6 +77,14 @@ function addBookToLibrary(book) {
     bookCardContainer.appendChild(newBookCard);
 }
 
+function refreshLibrary() {
+    const bookCardContainer = document.getElementById('book-card-container');
+    if (bookCardContainer) {
+        bookCardContainer.remove();
+    }
+    createLibrary();
+}
+
 function deleteBookCard(index) {
     myBooks.splice(index, 1);
     refreshLibrary();
@@ -95,15 +102,6 @@ function toggleBookStatus(index, statusElement) {
 
     statusElement.textContent = book.status;
 }
-
-function refreshLibrary() {
-    const bookCardContainer = document.getElementById('book-card-container');
-    if (bookCardContainer) {
-        bookCardContainer.remove();
-    }
-    createLibrary();
-}
-
 
 // ---------------Execution---------------
 

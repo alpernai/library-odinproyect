@@ -20,12 +20,14 @@ function Book(title, author, year, status) {
     this.status = status;
 }
 
-function createBookCard(book) {
+function createBookCard(book, index) {
     const card = document.createElement('div');
     const title = document.createElement('h2');
     const author = document.createElement('h3');
     const year = document.createElement('p');
     const status = document.createElement('p');
+    const deleteButton = document.createElement('button');
+    const toggleStatusButton = document.createElement('button');
 
     card.className = 'book-card';
     title.className = 'book-title';
@@ -37,11 +39,20 @@ function createBookCard(book) {
     author.textContent = `${book.author}`;
     year.textContent = `${book.year}`;
     status.textContent = `${book.status}`;
+    toggleStatusButton.textContent = 'Change Status';
 
+    deleteButton.className = 'delete-button';
+    toggleStatusButton.className = 'toggle-status-button';
+
+    deleteButton.addEventListener('click', () => deleteBookCard(index));
+    toggleStatusButton.addEventListener('click', () => toggleBookStatus(index, status));
+
+    card.appendChild(deleteButton);
     card.appendChild(title);
     card.appendChild(author);
     card.appendChild(year);
     card.appendChild(status);
+    card.appendChild(toggleStatusButton);
 
     return card;
 }
@@ -53,8 +64,8 @@ function createLibrary() {
     bookCardContainer.style.gap = '1rem';
     bookCardContainer.style.gridTemplateColumns = 'repeat(auto-fill, minmax(300px, 1fr))';
 
-    myBooks.forEach((book) => {
-        const card = createBookCard(book);
+    myBooks.forEach((book, index) => {
+        const card = createBookCard(book, index);
         bookCardContainer.appendChild(card);
     });
 
@@ -66,6 +77,33 @@ function addBookToLibrary(book) {
     const newBookCard = createBookCard(book);
     bookCardContainer.appendChild(newBookCard);
 }
+
+function deleteBookCard(index) {
+    myBooks.splice(index, 1);
+    refreshLibrary();
+}
+
+function toggleBookStatus(index, statusElement) {
+    const book = myBooks[index];
+    if (book.status === 'not read') {
+        book.status = 'reading';
+    } else if (book.status === 'reading') {
+        book.status = 'read';
+    } else {
+        book.status = 'not read';
+    }
+
+    statusElement.textContent = book.status;
+}
+
+function refreshLibrary() {
+    const bookCardContainer = document.getElementById('book-card-container');
+    if (bookCardContainer) {
+        bookCardContainer.remove();
+    }
+    createLibrary();
+}
+
 
 // ---------------Execution---------------
 

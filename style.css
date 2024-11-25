@@ -9,7 +9,6 @@
     box-sizing: border-box;
     font-family: 'Merriweather', serif;
     color: hsl(46, 39%, 23%);
-    /* border: 1px dotted red; */
 }
 
 /* ---------Layout--------- */
@@ -50,12 +49,22 @@ body {
     align-items: center;
 }
 
+.book-card{
+    justify-items: center;
+    align-items: center;
+}
+
 #book-card-container{
     grid-row: 2 / 3;
     display: grid;
     gap: 5rem;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     padding: 1rem;
+}
+
+.delete-button{
+    align-self: flex-end;
+    margin-bottom: 2em;
 }
 
 #footer {
@@ -78,19 +87,19 @@ body, #library-body, #footer {
     align-self: center;
     justify-self: center;
     margin: 1em;
-    min-height: 40px;
-    min-width: 120px;
+    height: 40px;
+    width: 120px;
     border-radius: 5px;
     background-color: hsl(46, 80%, 50%);
     color: white;
     border: none;
     cursor: pointer;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional shadow for depth */
-    transition: background-color 0.3s ease; /* Smooth hover effect */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+    transition: background-color 0.3s ease; 
 }
 
 #add-book-button:hover {
-    background-color: hsl(46, 90%, 40%); /* Slightly darker shade on hover */
+    background-color: hsl(46, 90%, 40%); 
 }
 
 #add-book-modal{    
@@ -114,7 +123,7 @@ body, #library-body, #footer {
     width: 100%;
     padding: 8px;
     border-radius: 5px;
-}
+}   
 
 #add-book-modal input[type="radio"] {
     margin-right: 5px;
@@ -133,15 +142,15 @@ body, #library-body, #footer {
   }
 
 #buttons-container button:hover {
-    opacity: 0.8;
+    opacity: 0.9;
 }
 
 #submit-button {
-    background-color: hsl(46, 90%, 40%); /* Complementary color */
+    background-color: hsl(46, 80%, 50%); 
 }
  
 #cancel-button {
-    background-color: hsl(0, 0%, 60%); /* Neutral gray for cancel */
+    background-color: hsl(0, 0%, 75%); /* Neutral gray for cancel */
 }
 
 .book-card{
@@ -159,3 +168,36 @@ body, #library-body, #footer {
 .book-card p {
     margin: 0;
 }
+
+.toggle-status-button {
+    background-color: #28a745; 
+    color: white;
+    border: none;
+    padding: 0.5em 1em;
+    font-size: 1em;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 2em;
+}
+
+.toggle-status-button:hover {
+    background-color: #218838; /* Darker green */
+}
+
+.delete-button {
+    background-color: red;
+    color: white;
+    border: none;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    margin-top: 15px;
+    position: relative;
+}
+
+.delete-button:hover {
+    background-color: darkred;
+}
+
+

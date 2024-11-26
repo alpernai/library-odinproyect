@@ -73,7 +73,8 @@ function createLibrary() {
 
 function addBookToLibrary(book) {
     const bookCardContainer = document.getElementById('book-card-container');
-    const newBookCard = createBookCard(book);
+    const index = myBooks.indexOf(book); 
+    const newBookCard = createBookCard(book, index);
     bookCardContainer.appendChild(newBookCard);
 }
 
